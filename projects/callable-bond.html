@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Callable Bond Pricing | Salim El Mallem</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <a href="../index.html" class="logo">
+                SALIM EL MALLEM
+            </a>
+
+            <div class="nav-links">
+
+                <a href="../index.html">
+                    PRESENTATION
+                </a>
+
+                <a href="../projects.html" class="active">
+                    PROJECTS
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             PROJECT HERO
+        ========================== -->
+
+        <section class="project-detail-hero">
+
+            <p class="eyebrow">
+                FIXED INCOME · DERIVATIVES · INTEREST RATES
+            </p>
+
+            <h1>
+                Callable Bond<br>
+                Pricing & Risk Management
+            </h1>
+
+            <p class="project-detail-intro">
+                Pricing and risk analysis of a 5-year NC2 callable bond
+                using a Hull–White one-factor interest-rate model and
+                a calibrated trinomial tree.
+            </p>
+
+            <div class="project-detail-links">
+
+                <a href="https://github.com/SalimEM04/callable-bond-pricing"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="primary-button">
+                    View GitHub Repository
+                </a>
+
+                <a href="https://github.com/SalimEM04/callable-bond-pricing/blob/main/notebooks/callable_bond_pricing.ipynb"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="secondary-button">
+                    View Notebook
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             KEY RESULTS
+        ========================== -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    KEY RESULTS
+                </p>
+
+                <div class="detail-metrics">
+
+                    <div class="detail-metric">
+                        <strong>106.68</strong>
+                        <span>Straight Bond</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>103.63</strong>
+                        <span>Callable Bond</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>3.05</strong>
+                        <span>Embedded Call</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>2.59</strong>
+                        <span>Effective Duration</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>0.0268</strong>
+                        <span>DV01</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             01 - PRODUCT
+        ========================== -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    01 · THE PRODUCT
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Understanding the<br>
+                        Embedded Optionality
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            A callable bond gives the issuer the right to redeem
+                            the bond before maturity on predetermined call dates.
+                        </p>
+
+                        <p>
+                            Economically, the investor owns a straight bond while
+                            simultaneously selling an interest-rate option to the issuer.
+                        </p>
+
+                        <div class="formula-box">
+                            Callable Bond = Straight Bond − Issuer Call Option
+                        </div>
+
+                        <p>
+                            When interest rates decline, refinancing becomes more
+                            attractive for the issuer. The probability of the bond
+                            being called therefore increases, limiting the investor's
+                            upside relative to an otherwise identical straight bond.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             02 - BOND STRUCTURE
+        ========================== -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    02 · BOND STRUCTURE
+                </p>
+
+                <h2 class="detail-title">
+                    5-Year NC2 Callable Bond
+                </h2>
+
+                <div class="structure-grid">
+
+                    <div>
+                        <span>Notional</span>
+                        <strong>100</strong>
+                    </div>
+
+                    <div>
+                        <span>Coupon</span>
+                        <strong>5.00%</strong>
+                    </div>
+
+                    <div>
+                        <span>Maturity</span>
+                        <strong>5 Years</strong>
+                    </div>
+
+                    <div>
+                        <span>Call Protection</span>
+                        <strong>2 Years</strong>
+                    </div>
+
+                    <div>
+                        <span>Call Dates</span>
+                        <strong>2Y · 3Y · 4Y</strong>
+                    </div>
+
+                    <div>
+                        <span>Call Price</span>
+                        <strong>100</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             03 - MODEL
+        ========================== -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    03 · METHODOLOGY
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Hull–White<br>
+                        Interest-Rate Model
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            Interest-rate dynamics are modelled using the
+                            one-factor Hull–White short-rate model.
+                        </p>
+
+                        <div class="formula-box">
+                            dr = [θ(t) − ar]dt + σdW
+                        </div>
+
+                        <p>
+                            The time-dependent drift allows the model to reproduce
+                            the initial zero-coupon curve, while mean reversion and
+                            short-rate volatility control the dynamics of future rates.
+                        </p>
+
+                        <p>
+                            The model is implemented through a trinomial short-rate
+                            tree. Arrow–Debreu state prices are used to calibrate
+                            the tree to the initial market discount curve.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             04 - PRICING
+        ========================== -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    04 · CALLABLE PRICING
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Backward Induction<br>
+                        & Optimal Exercise
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            The straight and callable bonds are priced by backward
+                            induction through the calibrated interest-rate tree.
+                        </p>
+
+                        <p>
+                            At every call date, the issuer compares the continuation
+                            value of the bond with the contractual call price.
+                        </p>
+
+                        <div class="formula-box">
+                            Callable Value = Coupon + min(Continuation Value, Call Price)
+                        </div>
+
+                        <p>
+                            Whenever the continuation value exceeds the call price,
+                            exercising the embedded option becomes optimal for the issuer.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             05 - RATE RISK
+        ========================== -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    05 · INTEREST-RATE RISK
+                </p>
+
+                <h2 class="detail-title">
+                    The Call Feature Limits Duration
+                </h2>
+
+                <div class="chart-container">
+
+                    <img src="../assets/rate_sensitivity.png"
+                         alt="Callable bond interest-rate sensitivity">
+
+                </div>
+
+                <div class="chart-analysis">
+
+                    <p>
+                        The straight bond exhibits the conventional positive
+                        convexity of a fixed-rate bond. The callable bond behaves
+                        differently as rates decline because the issuer's call
+                        option becomes increasingly valuable.
+                    </p>
+
+                    <p>
+                        In the base scenario, effective duration falls from
+                        approximately 4.56 for the straight bond to 2.59 for the
+                        callable bond, while DV01 decreases from 0.0486 to 0.0268.
+                    </p>
+
+                    <p>
+                        The embedded option therefore materially reduces the
+                        callable bond's exposure to parallel interest-rate movements.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             06 - VOLATILITY
+        ========================== -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    06 · VOLATILITY RISK
+                </p>
+
+                <h2 class="detail-title">
+                    Higher Volatility Benefits the Issuer
+                </h2>
+
+                <div class="chart-container">
+
+                    <img src="../assets/volatility_sensitivity.png"
+                         alt="Callable bond volatility sensitivity">
+
+                </div>
+
+                <div class="chart-analysis">
+
+                    <p>
+                        Increasing the Hull–White short-rate volatility parameter
+                        raises the value of the issuer's embedded call option.
+                    </p>
+
+                    <p>
+                        As volatility increases, the callable bond becomes less
+                        valuable to the investor, while the otherwise identical
+                        straight bond remains unchanged because its deterministic
+                        cash flows are discounted using the same calibrated initial curve.
+                    </p>
+
+                    <p>
+                        This illustrates the investor's implicit short-option exposure:
+                        higher interest-rate volatility increases the value transferred
+                        to the issuer through the call feature.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             07 - RISK MANAGEMENT
+        ========================== -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    07 · TRADING & RISK MANAGEMENT
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Managing a<br>
+                        Callable Position
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            From a trading-desk perspective, the callable bond cannot
+                            be managed purely as a conventional fixed-rate bond because
+                            its interest-rate exposure changes with the moneyness of
+                            the embedded call.
+                        </p>
+
+                        <p>
+                            As rates decline and the option moves closer to exercise,
+                            duration and convexity can change materially. The hedge
+                            therefore needs to be dynamically adjusted rather than
+                            treated as a static DV01 position.
+                        </p>
+
+                        <p>
+                            The position is also exposed to the volatility parameter:
+                            higher rate volatility increases the embedded call value
+                            and decreases the value of the callable bond.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             08 - LIMITATIONS
+        ========================== -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    08 · MODEL LIMITATIONS
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        From Educational Model<br>
+                        to Production Pricing
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            The framework is designed to capture the main economic
+                            mechanisms of callable-bond pricing rather than reproduce
+                            a production fixed-income pricing library.
+                        </p>
+
+                        <p>
+                            The initial curve is illustrative, and the Hull–White
+                            mean-reversion and volatility parameters are model inputs
+                            rather than parameters calibrated to a full market surface
+                            of interest-rate derivatives.
+                        </p>
+
+                        <p>
+                            The implementation also abstracts from credit risk,
+                            liquidity, funding, transaction costs, detailed day-count
+                            conventions and settlement mechanics.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <section class="project-footer">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    EXPLORE THE IMPLEMENTATION
+                </p>
+
+                <h2>
+                    Full Python implementation<br>
+                    available on GitHub.
+                </h2>
+
+                <div class="project-detail-links">
+
+                    <a href="https://github.com/SalimEM04/callable-bond-pricing"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="primary-button">
+                        GitHub Repository
+                    </a>
+
+                    <a href="https://github.com/SalimEM04/callable-bond-pricing/blob/main/notebooks/callable_bond_pricing.ipynb"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="secondary-button">
+                        Jupyter Notebook
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

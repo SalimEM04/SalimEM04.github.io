@@ -470,6 +470,10 @@ header {
     border: 1px solid #dddddd;
 }
 
+.project-card + .project-card {
+    margin-top: 40px;
+}
+
 .project-number {
     margin-bottom: 40px;
 

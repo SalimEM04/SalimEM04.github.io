@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Autocallable Note Pricing | Salim El Mallem</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar">
+
+            <a href="../index.html" class="logo">
+                SALIM EL MALLEM
+            </a>
+
+            <div class="nav-links">
+
+                <a href="../index.html">
+                    PRESENTATION
+                </a>
+
+                <a href="../projects.html" class="active">
+                    PROJECTS
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- PROJECT HERO -->
+
+        <section class="project-detail-hero">
+
+            <p class="eyebrow">
+                STRUCTURED PRODUCTS · DERIVATIVES · MONTE CARLO
+            </p>
+
+            <h1>
+                Autocallable Note<br>
+                Structuring & Pricing
+            </h1>
+
+            <p class="project-detail-intro">
+                Structuring, pricing and risk analysis of a single-underlying
+                autocallable note with conditional memory coupons and downside
+                protection using risk-neutral Monte Carlo simulation.
+            </p>
+
+            <div class="project-detail-links">
+
+                <a href="https://github.com/SalimEM04/autocall-snowball"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="primary-button">
+                    View GitHub Repository
+                </a>
+
+                <a href="https://github.com/SalimEM04/autocall-snowball/blob/main/notebooks/autocall_snowball.ipynb"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="secondary-button">
+                    View Notebook
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEY RESULTS -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    KEY RESULTS
+                </p>
+
+                <div class="detail-metrics">
+
+                    <div class="detail-metric">
+                        <strong>1.34%</strong>
+                        <span>Fair Quarterly Coupon</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>70.73%</strong>
+                        <span>Early Autocall</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>29.27%</strong>
+                        <span>Reach Maturity</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>7.16%</strong>
+                        <span>Principal Loss</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>100K</strong>
+                        <span>Monte Carlo Paths</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 01 — PRODUCT -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    01 · THE PRODUCT
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Yield Enhancement<br>
+                        with Conditional Protection
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            The product is a single-underlying autocallable note
+                            combining conditional memory coupons, automatic early
+                            redemption and conditional downside protection.
+                        </p>
+
+                        <p>
+                            The investor receives a coupon when the underlying is
+                            above the coupon barrier. If the condition is not satisfied,
+                            the missed coupon is accumulated through the memory feature
+                            and may be recovered at a later observation date.
+                        </p>
+
+                        <p>
+                            In exchange for this income potential, the investor accepts
+                            limited upside through the autocall mechanism and remains
+                            exposed to significant downside if the underlying finishes
+                            below the protection barrier.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 02 — PRODUCT STRUCTURE -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    02 · PRODUCT STRUCTURE
+                </p>
+
+                <h2 class="detail-title">
+                    3-Year Autocallable Note
+                </h2>
+
+                <div class="structure-grid">
+
+                    <div>
+                        <span>Notional</span>
+                        <strong>100</strong>
+                    </div>
+
+                    <div>
+                        <span>Maximum Maturity</span>
+                        <strong>3 Years</strong>
+                    </div>
+
+                    <div>
+                        <span>Observations</span>
+                        <strong>Quarterly</strong>
+                    </div>
+
+                    <div>
+                        <span>Coupon Barrier</span>
+                        <strong>70%</strong>
+                    </div>
+
+                    <div>
+                        <span>Autocall Level</span>
+                        <strong>100%</strong>
+                    </div>
+
+                    <div>
+                        <span>Non-Call Period</span>
+                        <strong>1 Year</strong>
+                    </div>
+
+                    <div>
+                        <span>Protection Barrier</span>
+                        <strong>60%</strong>
+                    </div>
+
+                    <div>
+                        <span>Barrier Type</span>
+                        <strong>European</strong>
+                    </div>
+
+                    <div>
+                        <span>Fair Quarterly Coupon</span>
+                        <strong>1.34%</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 03 — PAYOFF -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    03 · PAYOFF MECHANICS
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Path-Dependent<br>
+                        Cash Flows
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            At each quarterly observation date, the underlying level
+                            determines whether the coupon is paid and whether the product
+                            is automatically redeemed.
+                        </p>
+
+                        <p>
+                            If the underlying is above the 70% coupon barrier, the current
+                            coupon and any previously missed memory coupons are paid.
+                        </p>
+
+                        <p>
+                            From the end of the one-year non-call period, the note is
+                            automatically redeemed when the underlying is at or above
+                            100% of its initial level.
+                        </p>
+
+                        <div class="formula-box">
+                            Autocall Redemption = Notional + Coupon Payment
+                        </div>
+
+                        <p>
+                            If the note survives until maturity and the final underlying
+                            level remains above the 60% protection barrier, the investor
+                            receives the full notional. Below the barrier, principal
+                            redemption follows the performance of the underlying.
+                        </p>
+
+                        <div class="formula-box">
+                            Redemption = Notional × S(T) / S(0)
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 04 — MONTE CARLO -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    04 · PRICING METHODOLOGY
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Risk-Neutral<br>
+                        Monte Carlo Pricing
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            The underlying is modelled under the risk-neutral measure
+                            using a geometric Brownian motion with constant volatility,
+                            interest rate and dividend yield.
+                        </p>
+
+                        <div class="formula-box">
+                            dS = (r − q)Sdt + σS dW
+                        </div>
+
+                        <p>
+                            100,000 underlying paths are simulated at the contractual
+                            quarterly observation dates. The payoff rules are then
+                            applied independently to every simulated path.
+                        </p>
+
+                        <p>
+                            The resulting cash flows are discounted to the valuation
+                            date and averaged to obtain the theoretical value of the note.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 05 — FAIR COUPON -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    05 · FAIR COUPON CALIBRATION
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Structuring the<br>
+                        Coupon
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            Rather than assuming an arbitrary coupon, the coupon is
+                            calibrated so that the theoretical value of the note equals
+                            its issue price.
+                        </p>
+
+                        <div class="formula-box">
+                            V₀(c*) = 100
+                        </div>
+
+                        <p>
+                            The root is solved numerically using Brent's method while
+                            reusing the same simulated paths across coupon trials to
+                            reduce Monte Carlo noise.
+                        </p>
+
+                        <p>
+                            Under the initial market assumptions, the resulting fair
+                            quarterly coupon is approximately 1.34%, corresponding to
+                            an indicative simple annualized coupon of approximately 5.37%.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 06 — MONTE CARLO ACCURACY -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    06 · MONTE CARLO ACCURACY
+                </p>
+
+                <h2 class="detail-title">
+                    Price Convergence
+                </h2>
+
+                <div class="chart-container">
+
+                    <img src="../assets/autocall_monte_carlo_convergence.png"
+                         alt="Autocallable Monte Carlo price convergence">
+
+                </div>
+
+                <div class="chart-analysis">
+
+                    <p>
+                        As the number of simulated paths increases, the Monte Carlo
+                        estimate progressively stabilizes around the calibrated issue
+                        price.
+                    </p>
+
+                    <p>
+                        At 100,000 paths, the estimated Monte Carlo standard error is
+                        approximately 0.0405, corresponding to an approximate 95%
+                        confidence interval of [99.9205, 100.0795].
+                    </p>
+
+                    <p>
+                        The full-sample value equals 100 by construction because the
+                        fair coupon is calibrated using the same Monte Carlo sample.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 07 — SPOT -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    07 · SPOT RISK
+                </p>
+
+                <h2 class="detail-title">
+                    Non-Linear Exposure to the Underlying
+                </h2>
+
+                <div class="chart-container">
+
+                    <img src="../assets/autocall_spot_sensitivity.png"
+                         alt="Autocallable note spot sensitivity">
+
+                </div>
+
+                <div class="chart-analysis">
+
+                    <p>
+                        The note has positive exposure to the underlying around the
+                        initial market conditions, with a local Delta of approximately
+                        0.1903.
+                    </p>
+
+                    <p>
+                        The relationship is non-linear because upside participation
+                        becomes increasingly limited by the possibility of automatic
+                        early redemption.
+                    </p>
+
+                    <p>
+                        Around the initial market conditions, the estimated Gamma is
+                        approximately -0.0217, reflecting the local concavity of the
+                        investor payoff profile.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 08 — VOLATILITY -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    08 · VOLATILITY RISK
+                </p>
+
+                <h2 class="detail-title">
+                    The Investor is Locally Short Vega
+                </h2>
+
+                <div class="chart-container">
+
+                    <img src="../assets/autocall_volatility_sensitivity.png"
+                         alt="Autocallable note volatility sensitivity">
+
+                </div>
+
+                <div class="chart-analysis">
+
+                    <p>
+                        Around the initial market conditions, increasing volatility
+                        reduces the theoretical value of the investor position.
+                    </p>
+
+                    <p>
+                        The estimated Vega is approximately -0.6044 per one volatility
+                        point.
+                    </p>
+
+                    <p>
+                        Higher volatility increases the dispersion of future outcomes,
+                        while the investor's upside is constrained by the autocall
+                        mechanism and significant downside remains possible below the
+                        protection barrier.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 09 — INTEREST RATES -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    09 · INTEREST-RATE RISK
+                </p>
+
+                <h2 class="detail-title">
+                    Interest-Rate Sensitivity
+                </h2>
+
+                <div class="chart-container">
+
+                    <img src="../assets/autocall_rate_sensitivity.png"
+                         alt="Autocallable note interest-rate sensitivity">
+
+                </div>
+
+                <div class="chart-analysis">
+
+                    <p>
+                        Under the model assumptions, the investor position has negative
+                        local interest-rate sensitivity.
+                    </p>
+
+                    <p>
+                        The estimated Rho is approximately -0.0101 per basis point around
+                        the initial market conditions.
+                    </p>
+
+                    <p>
+                        This sensitivity captures both the effect of rates on risk-neutral
+                        underlying dynamics and the discounting of future cash flows.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 10 — AUTOCALL DISTRIBUTION -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    10 · EARLY REDEMPTION
+                </p>
+
+                <h2 class="detail-title">
+                    Effective Maturity is Path-Dependent
+                </h2>
+
+                <div class="chart-container">
+
+                    <img src="../assets/autocall_distribution.png"
+                         alt="Autocallable note early redemption distribution">
+
+                </div>
+
+                <div class="chart-analysis">
+
+                    <p>
+                        Approximately 70.7% of simulated paths terminate before
+                        contractual maturity through the autocall mechanism.
+                    </p>
+
+                    <p>
+                        The distribution is concentrated around the earliest eligible
+                        observation dates because paths satisfying the autocall condition
+                        leave the product immediately.
+                    </p>
+
+                    <p>
+                        Approximately 29.3% of paths survive until the final three-year
+                        maturity.
+                    </p>
+
+                    <p>
+                        These probabilities are generated under the risk-neutral pricing
+                        measure and should therefore be interpreted as model-implied
+                        probabilities rather than forecasts of real-world frequencies.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 11 — DOWNSIDE RISK -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    11 · DOWNSIDE RISK
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Conditional Protection,<br>
+                        Not Guaranteed Protection
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            Approximately 7.16% of all simulated paths result in a
+                            principal loss at maturity.
+                        </p>
+
+                        <p>
+                            Conditional on the product reaching maturity without being
+                            autocalled, the probability of principal loss increases to
+                            approximately 24.45%.
+                        </p>
+
+                        <p>
+                            When a principal loss occurs, the average simulated reduction
+                            in principal redemption is approximately 48.58% of notional.
+                            This measure does not represent the investor's total economic
+                            P&amp;L because coupons may have been received earlier in the
+                            life of the product.
+                        </p>
+
+                        <p>
+                            The protection barrier therefore reduces the frequency of
+                            principal losses but does not eliminate downside exposure.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 12 — TRADING & RISK MANAGEMENT -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    12 · TRADING & RISK MANAGEMENT
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Managing the<br>
+                        Issuer Position
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            From a trading-desk perspective, the issuer is short the
+                            structured note sold to the investor and therefore initially
+                            carries approximately the opposite market exposures.
+                        </p>
+
+                        <p>
+                            Around the initial market conditions, the investor is
+                            positive Delta and negative Gamma, Vega and Rho. Before
+                            hedging, the issuer therefore has approximately negative
+                            Delta and positive Gamma, Vega and Rho exposure.
+                        </p>
+
+                        <p>
+                            These sensitivities are local and strongly state-dependent.
+                            They can change materially as the underlying approaches the
+                            coupon, autocall and downside protection barriers.
+                        </p>
+
+                        <p>
+                            A real trading desk would therefore manage the position
+                            dynamically rather than treating the initial Greeks as
+                            constant exposures throughout the life of the note.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 13 — MODEL LIMITATIONS -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    13 · MODEL LIMITATIONS
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        From Educational Model<br>
+                        to Production Pricing
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            The framework is intentionally simplified to focus on the
+                            main economic mechanisms of the autocallable note.
+                        </p>
+
+                        <p>
+                            The underlying follows a geometric Brownian motion with
+                            constant volatility, while interest rates and the dividend
+                            yield are also assumed constant.
+                        </p>
+
+                        <p>
+                            A production implementation could incorporate the market
+                            implied volatility surface, local or stochastic volatility,
+                            interest-rate and dividend curves, and more realistic
+                            underlying dynamics.
+                        </p>
+
+                        <p>
+                            The framework also abstracts from issuer credit risk,
+                            funding costs, transaction costs, liquidity constraints and
+                            the discrete dynamic hedging process faced by the issuing desk.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <section class="project-footer">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    EXPLORE THE IMPLEMENTATION
+                </p>
+
+                <h2>
+                    Full Python implementation<br>
+                    available on GitHub.
+                </h2>
+
+                <div class="project-detail-links">
+
+                    <a href="https://github.com/SalimEM04/autocall-snowball"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="primary-button">
+                        GitHub Repository
+                    </a>
+
+                    <a href="https://github.com/SalimEM04/autocall-snowball/blob/main/notebooks/autocall_snowball.ipynb"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="secondary-button">
+                        Jupyter Notebook
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

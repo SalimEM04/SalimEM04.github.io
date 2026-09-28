@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Barrier Reverse Convertible | Salim El Mallem</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar">
+
+            <a href="../index.html" class="logo">
+                SALIM EL MALLEM
+            </a>
+
+            <div class="nav-links">
+
+                <a href="../index.html">
+                    PRESENTATION
+                </a>
+
+                <a href="../projects.html" class="active">
+                    PROJECTS
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- PROJECT HERO -->
+
+        <section class="project-detail-hero">
+
+            <p class="eyebrow">
+                EQUITY DERIVATIVES · STRUCTURED PRODUCTS · HEDGING
+            </p>
+
+            <h1>
+                Barrier Reverse Convertible<br>
+                Pricing & Dynamic Hedging
+            </h1>
+
+            <p class="project-detail-intro">
+                Pricing, structuring and dynamic hedging of a single-stock
+                Barrier Reverse Convertible, with continuous barrier monitoring,
+                Monte Carlo simulation and analysis of residual hedging P&amp;L.
+            </p>
+
+            <div class="project-detail-links">
+
+                <a href="https://github.com/SalimEM04/reverse-convertible-hedging"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="primary-button">
+                    View GitHub
+                </a>
+
+                <a href="https://github.com/SalimEM04/reverse-convertible-hedging/blob/main/notebooks/reverse_convertible_hedging.ipynb"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="secondary-button">
+                    View Notebook
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEY RESULTS -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    KEY RESULTS
+                </p>
+
+                <h2 class="detail-title">
+                    Trade Overview
+                </h2>
+
+                <div class="detail-metrics">
+
+                    <div class="detail-metric">
+                        <strong>70%</strong>
+                        <span>Downside Barrier</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>20%</strong>
+                        <span>Implied Volatility</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>5,000</strong>
+                        <span>Hedging Paths</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>500K</strong>
+                        <span>Validation Paths</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>1Y</strong>
+                        <span>Maturity</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRODUCT STRUCTURE -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    01 · PRODUCT STRUCTURE
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Understanding the
+                        Barrier Reverse Convertible
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            The project considers a 1-year single-stock Barrier Reverse
+                            Convertible issued at par. The note pays a fixed unconditional
+                            quarterly coupon while exposing the investor to downside risk
+                            in the underlying.
+                        </p>
+
+                        <p>
+                            The strike is set at 100% of the initial stock price and the
+                            downside barrier at 70%. The barrier is continuously monitored
+                            throughout the life of the trade.
+                        </p>
+
+                        <p>
+                            If the barrier is never breached, the investor receives the
+                            full principal at maturity. If the barrier has been breached
+                            and the stock finishes below the strike, the redemption amount
+                            falls with the underlying.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="formula-box">
+                    BRC = Bond + Coupons − Down-and-In Put
+                </div>
+
+
+                <div class="structure-grid">
+
+                    <div>
+                        <span>Notional</span>
+                        <strong>100</strong>
+                    </div>
+
+                    <div>
+                        <span>Initial Spot</span>
+                        <strong>100</strong>
+                    </div>
+
+                    <div>
+                        <span>Strike</span>
+                        <strong>100%</strong>
+                    </div>
+
+                    <div>
+                        <span>Downside Barrier</span>
+                        <strong>70%</strong>
+                    </div>
+
+                    <div>
+                        <span>Maturity</span>
+                        <strong>1 Year</strong>
+                    </div>
+
+                    <div>
+                        <span>Coupon Frequency</span>
+                        <strong>Quarterly</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRICING -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    02 · PRICING FRAMEWORK
+                </p>
+
+                <h2 class="detail-title">
+                    Pricing the Embedded Barrier Option
+                </h2>
+
+                <div class="detail-text">
+
+                    <p>
+                        The underlying is modeled under the risk-neutral measure using
+                        Black-Scholes dynamics with a 3% risk-free rate, 2% dividend
+                        yield and 20% implied volatility.
+                    </p>
+
+                    <p>
+                        The embedded down-and-in put is valued using in-out parity.
+                        The corresponding continuously monitored down-and-out put is
+                        priced analytically using the absorbing transition density of
+                        the log-price process.
+                    </p>
+
+                </div>
+
+
+                <div class="formula-box">
+                    Down-and-In Put = Vanilla Put − Down-and-Out Put
+                </div>
+
+
+                <div class="detail-text">
+
+                    <p>
+                        This decomposition separates the funding component of the note
+                        from the embedded equity optionality and provides a consistent
+                        framework for pricing, structuring and risk analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STRUCTURING -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    03 · STRUCTURING
+                </p>
+
+                <h2 class="detail-title">
+                    Fair Coupon Calibration
+                </h2>
+
+                <div class="detail-text">
+
+                    <p>
+                        The annual coupon is calibrated so that the initial model value
+                        of the Barrier Reverse Convertible equals its issue price of 100.
+                    </p>
+
+                    <p>
+                        Higher implied volatility increases the value of the downside
+                        option sold by the investor. This increases the option premium
+                        available to finance the coupon and therefore affects the coupon
+                        that can be offered when structuring the note.
+                    </p>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <img src="../assets/fair_coupon_vs_volatility.png"
+                         alt="Fair coupon versus implied volatility">
+
+                </div>
+
+
+                <div class="chart-analysis">
+
+                    <p>
+                        The relationship highlights one of the central structuring
+                        mechanisms of the product: the enhanced coupon is partly financed
+                        by the value of the downside optionality sold by the investor.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BARRIER RISK -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    04 · BARRIER RISK
+                </p>
+
+                <h2 class="detail-title">
+                    Pre- and Post-Knock-In Risk
+                </h2>
+
+                <div class="detail-text">
+
+                    <p>
+                        Barrier products are path dependent. The current underlying
+                        price alone is not sufficient to determine the value and hedge
+                        of the note: the desk must also know whether the downside barrier
+                        has previously been breached.
+                    </p>
+
+                    <p>
+                        Before knock-in, the embedded option is a down-and-in put.
+                        Once the barrier has been breached, it becomes economically
+                        equivalent to a vanilla put for the remaining life of the trade.
+                    </p>
+
+                </div>
+
+
+                <div class="formula-box">
+                    Knock-In → Down-and-In Put becomes Vanilla Put
+                </div>
+
+
+                <div class="chart-container">
+
+                    <img src="../assets/pre_post_knockin_delta.png"
+                         alt="Pre- and post-knock-in delta">
+
+                </div>
+
+
+                <div class="chart-analysis">
+
+                    <p>
+                        The comparison illustrates why barrier state is a critical
+                        trading variable. Two notes with the same current spot can have
+                        different delta exposures depending on whether the barrier has
+                        already been breached.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DYNAMIC HEDGING -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    05 · DYNAMIC HEDGING
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        Managing the Desk's
+                        Delta Exposure
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            The issuing desk is short the structured note and dynamically
+                            manages the resulting equity exposure using the underlying
+                            stock.
+                        </p>
+
+                        <p>
+                            At each hedge date, the BRC delta is recomputed using the
+                            current spot, remaining maturity and barrier state. The stock
+                            position is then adjusted to neutralize the local first-order
+                            equity exposure.
+                        </p>
+
+                        <p>
+                            A self-financing hedge account tracks stock transactions,
+                            cash-account financing, dividend income, coupon payments and
+                            the final redemption of the note.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="formula-box">
+                    Desk Hedge Position = Δ(BRC) shares
+                </div>
+
+
+                <div class="detail-text">
+
+                    <p>
+                        Delta neutrality does not eliminate the desk's risk. Gamma,
+                        volatility, barrier path dependency and discrete rebalancing
+                        continue to generate residual hedging P&amp;L.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTINUOUS BARRIER -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    06 · CONTINUOUS BARRIER MONITORING
+                </p>
+
+                <h2 class="detail-title">
+                    Brownian-Bridge Barrier Detection
+                </h2>
+
+                <div class="detail-text">
+
+                    <p>
+                        The contractual barrier is continuously monitored. Checking only
+                        daily simulated stock prices would therefore miss barrier crossings
+                        occurring between two consecutive observations.
+                    </p>
+
+                    <p>
+                        Brownian-bridge crossing probabilities are used between daily
+                        simulated prices to account for these intra-day barrier events
+                        without requiring an extremely fine simulation grid.
+                    </p>
+
+                    <p>
+                        Barrier monitoring is kept independent from hedge-rebalancing
+                        frequency. The barrier remains continuously monitored even when
+                        the desk hedges weekly or monthly.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HEDGING P&L -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    07 · HEDGING P&amp;L
+                </p>
+
+                <h2 class="detail-title">
+                    Impact of Rebalancing Frequency
+                </h2>
+
+                <div class="detail-text">
+
+                    <p>
+                        The dynamic hedging strategy is simulated across 5,000 underlying
+                        paths using a vectorized Monte Carlo framework.
+                    </p>
+
+                    <p>
+                        Daily, weekly and monthly hedge rebalancing are compared while
+                        keeping the contractual barrier monitoring unchanged.
+                    </p>
+
+                    <p>
+                        The standard deviation of terminal hedging P&amp;L is used to
+                        measure residual hedging risk across the three strategies.
+                    </p>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <img src="../assets/hedging_pnl_std_frequency.png"
+                         alt="Standard deviation of hedging P&L by rebalancing frequency">
+
+                </div>
+
+
+                <div class="chart-analysis">
+
+                    <p>
+                        More frequent rebalancing reduces the amount of underlying
+                        movement left unhedged between hedge adjustments. However,
+                        discrete hedging prevents the desk from perfectly replicating
+                        the embedded option exposure.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VOLATILITY -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    08 · VOLATILITY
+                </p>
+
+                <h2 class="detail-title">
+                    Implied vs Realized Volatility
+                </h2>
+
+                <div class="detail-text">
+
+                    <p>
+                        The note is initially priced and hedged using a 20% implied
+                        volatility. Hedging performance is then simulated under realized
+                        volatility environments of 15%, 20%, 25% and 30%.
+                    </p>
+
+                    <p>
+                        Implied volatility determines the initial option value, fair
+                        coupon and hedge ratios used by the desk. Realized volatility
+                        determines the actual path followed by the underlying after
+                        issuance.
+                    </p>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <img src="../assets/hedging_pnl_realized_volatility.png"
+                         alt="Mean hedging P&L versus realized volatility">
+
+                </div>
+
+
+                <div class="chart-analysis">
+
+                    <p>
+                        The experiment illustrates how differences between the volatility
+                        embedded in the trade and the volatility subsequently realized
+                        by the market affect the performance of the dynamic hedge.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VALIDATION -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    09 · MODEL VALIDATION
+                </p>
+
+                <h2 class="detail-title">
+                    Independent Monte Carlo Benchmark
+                </h2>
+
+                <div class="detail-text">
+
+                    <p>
+                        The analytical continuous-barrier pricing engine is independently
+                        benchmarked against a Monte Carlo estimator using Brownian-bridge
+                        barrier crossing probabilities.
+                    </p>
+
+                </div>
+
+
+                <div class="detail-metrics">
+
+                    <div class="detail-metric">
+                        <strong>2.3549</strong>
+                        <span>Analytical DI Put</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>2.3677</strong>
+                        <span>Monte Carlo DI Put</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>0.0116</strong>
+                        <span>MC Standard Error</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>1.1</strong>
+                        <span>Standard Errors</span>
+                    </div>
+
+                    <div class="detail-metric">
+                        <strong>500K</strong>
+                        <span>MC Paths</span>
+                    </div>
+
+                </div>
+
+
+                <div class="detail-text">
+
+                    <p>
+                        The difference between the analytical and Monte Carlo estimates
+                        is approximately 1.1 Monte Carlo standard errors, indicating that
+                        the observed difference is consistent with simulation uncertainty.
+                    </p>
+
+                    <p>
+                        This provides an independent numerical validation of the
+                        continuous-barrier pricing engine used throughout the project.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODEL LIMITATIONS -->
+
+        <section class="detail-section">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    10 · MODEL LIMITATIONS
+                </p>
+
+                <div class="detail-two-columns">
+
+                    <h2>
+                        From the Model
+                        to a Trading Desk
+                    </h2>
+
+                    <div class="detail-text">
+
+                        <p>
+                            The framework intentionally isolates the core pricing and
+                            hedging mechanics of a Barrier Reverse Convertible rather
+                            than reproducing a production structured-products pricing
+                            system.
+                        </p>
+
+                        <p>
+                            The model assumes constant volatility, interest rates and
+                            dividend yield. It does not incorporate volatility skew,
+                            stochastic rates, transaction costs, bid-ask spreads,
+                            stock-borrow costs, issuer credit risk or explicit volatility
+                            and gamma hedging instruments.
+                        </p>
+
+                        <p>
+                            In practice, an equity derivatives desk would incorporate
+                            market-implied volatility surfaces, funding and credit
+                            considerations, transaction costs, liquidity constraints
+                            and additional hedging instruments.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECT FOOTER -->
+
+        <section class="project-footer">
+
+            <div class="section-container">
+
+                <p class="section-label">
+                    EXPLORE THE PROJECT
+                </p>
+
+                <h2>
+                    Full Python implementation
+                    and numerical analysis.
+                </h2>
+
+                <div class="project-detail-links">
+
+                    <a href="https://github.com/SalimEM04/reverse-convertible-hedging"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="primary-button">
+                        GitHub Repository
+                    </a>
+
+                    <a href="https://github.com/SalimEM04/reverse-convertible-hedging/blob/main/notebooks/reverse_convertible_hedging.ipynb"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="secondary-button">
+                        View Notebook
+                    </a>
+
+                    <a href="../projects.html"
+                       class="secondary-button">
+                        Back to Projects
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
